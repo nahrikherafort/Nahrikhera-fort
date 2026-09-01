@@ -175,14 +175,50 @@ a[href$=".pdf"]:hover {
 </section>
 
 <footer><div class="footer-brand">Nahrikhera Fort</div><p>Preserving heritage • Honouring the Naruka Family</p></footer>
-<div class="pdf-card">
-    <h3>Nahrikhera Fort — Heritage Record</h3>
-    <p>People of Nahrikhera & Lineage</p>
+<div id="pdf-viewer" style="width:100%; max-width:900px; margin:30px auto;"></div>
 
-    <a href="Nahrikhera_fort_professions_removed.pdf" target="_blank" class="pdf-button">
-        Open PDF
-    </a>
-</div>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.min.js"></script>
+
+<script>
+const pdfUrl = "Nahrikhera_fort_professions_removed.pdf";
+
+pdfjsLib.GlobalWorkerOptions.workerSrc =
+"https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.worker.min.js";
+
+const pdfViewer = document.getElementById("pdf-viewer");
+
+pdfjsLib.getDocument(pdfUrl).promise.then(function(pdf) {
+
+  for (let pageNumber = 1; pageNumber <= pdf.numPages; pageNumber++) {
+
+    pdf.getPage(pageNumber).then(function(page) {
+
+      const scale = 1.5;
+      const viewport = page.getViewport({ scale: scale });
+
+      const canvas = document.createElement("canvas");
+
+      canvas.style.width = "100%";
+      canvas.style.height = "auto";
+      canvas.style.display = "block";
+      canvas.style.marginBottom = "20px";
+      canvas.style.borderRadius = "12px";
+
+      const context = canvas.getContext("2d");
+
+      canvas.width = viewport.width;
+      canvas.height = viewport.height;
+
+      pdfViewer.appendChild(canvas);
+
+      page.render({
+        canvasContext: context,
+        viewport: viewport
+      });
+    });
+  }
+});
+</script>
 <script>
 let rating=0;
 document.querySelectorAll('#stars button').forEach(b=>b.onclick=()=>{
