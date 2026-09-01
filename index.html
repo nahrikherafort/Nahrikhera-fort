@@ -26,6 +26,139 @@ footer{text-align:center;padding:45px 20px;border-top:1px solid #2d2418;color:#8
 @media(max-width:650px){.navlinks{display:none}.hero h1{font-size:45px}.hero h2{letter-spacing:4px}section{padding:70px 6%}}
 
 .upload-photo{width:100%;height:190px;object-fit:cover;border-radius:14px;border:1px solid #4a3923}
+/* ROYAL HISTORY TIMELINE */
+
+.timeline-section {
+  padding: 80px 20px;
+  text-align: center;
+  background: linear-gradient(135deg, #fffaf0, #f5ead2);
+}
+
+.timeline-section h2 {
+  font-size: 38px;
+  margin-bottom: 10px;
+  color: #5b3515;
+}
+
+.timeline-subtitle {
+  font-size: 16px;
+  color: #765b3a;
+  margin-bottom: 60px;
+}
+
+.timeline {
+  max-width: 850px;
+  margin: auto;
+  position: relative;
+}
+
+.timeline::before {
+  content: "";
+  position: absolute;
+  left: 50%;
+  top: 0;
+  bottom: 0;
+  width: 3px;
+  background: #b8860b;
+  transform: translateX(-50%);
+}
+
+.timeline-item {
+  width: 50%;
+  padding: 15px 35px;
+  position: relative;
+  box-sizing: border-box;
+}
+
+.timeline-item:nth-child(odd) {
+  left: 0;
+  text-align: right;
+}
+
+.timeline-item:nth-child(even) {
+  left: 50%;
+  text-align: left;
+}
+
+.timeline-dot {
+  position: absolute;
+  top: 20px;
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  background: #fff;
+  border: 3px solid #b8860b;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 22px;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.15);
+}
+
+.timeline-item:nth-child(odd) .timeline-dot {
+  right: -24px;
+}
+
+.timeline-item:nth-child(even) .timeline-dot {
+  left: -24px;
+}
+
+.timeline-content {
+  background: rgba(255,255,255,0.85);
+  padding: 22px;
+  border-radius: 15px;
+  box-shadow: 0 8px 25px rgba(80,50,20,0.12);
+  transition: 0.3s;
+}
+
+.timeline-content:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 12px 30px rgba(80,50,20,0.2);
+}
+
+.timeline-content span {
+  color: #b8860b;
+  font-weight: bold;
+  font-size: 14px;
+}
+
+.timeline-content h3 {
+  color: #5b3515;
+  margin: 8px 0;
+  font-size: 22px;
+}
+
+.timeline-content p {
+  color: #5f5142;
+  line-height: 1.6;
+  margin: 0;
+}
+
+@media (max-width: 700px) {
+  .timeline::before {
+    left: 20px;
+  }
+
+  .timeline-item,
+  .timeline-item:nth-child(even),
+  .timeline-item:nth-child(odd) {
+    width: 100%;
+    left: 0;
+    text-align: left;
+    padding-left: 65px;
+    padding-right: 5px;
+  }
+
+  .timeline-dot,
+  .timeline-item:nth-child(odd) .timeline-dot,
+  .timeline-item:nth-child(even) .timeline-dot {
+    left: -4px;
+    right: auto;
+  }
+}
+
+
+
 </style><style>
 /* 👑 ROYAL THEME */
 body {
