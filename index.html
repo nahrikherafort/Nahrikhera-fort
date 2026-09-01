@@ -367,7 +367,22 @@ a[href$=".pdf"]:hover {
 <footer><div class="footer-brand">Nahrikhera Fort</div><p>Preserving heritage • Honouring the Naruka Family</p></footer>
 <div id="pdf-viewer" style="width:100%; max-width:900px; margin:30px auto;"></div>
 
-<script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.min.js">const revealElements = document.querySelectorAll(
+  "section, .timeline-item, .timeline-content, .card"
+);
+
+const revealOnScroll = () => {
+  revealElements.forEach(element => {
+    const top = element.getBoundingClientRect().top;
+
+    if (top < window.innerHeight - 80) {
+      element.classList.add("active");
+    }
+  });
+};
+
+window.addEventListener("scroll", revealOnScroll);
+revealOnScroll();</script>
 
 <script>
 const pdfUrl = "Nahrikhera_fort_professions_removed.pdf";
