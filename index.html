@@ -248,7 +248,37 @@ a[href$=".pdf"]:hover {
     color: #1b1111 !important;
     transform: translateY(-2px);
 }
-</style>
+/* ELEGANT BACK TO TOP */
+
+#backToTop {
+  position: fixed;
+  right: 20px;
+  bottom: 25px;
+  width: 48px;
+  height: 48px;
+  border: 2px solid #b8860b;
+  border-radius: 50%;
+  background: rgba(255, 250, 240, 0.95);
+  color: #5b3515;
+  font-size: 24px;
+  font-weight: bold;
+  cursor: pointer;
+  display: none;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 5px 18px rgba(0,0,0,0.18);
+  z-index: 9999;
+  transition: all 0.3s ease;
+}
+
+#backToTop:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 25px rgba(0,0,0,0.25);
+}
+
+#backToTop.show {
+  display: flex;
+}</style>
 </head>
 <body>
 <header style="text-align:center; padding:60px 20px; background:linear-gradient(135deg,#3b2414,#8b5a2b); color:white;">
@@ -423,7 +453,24 @@ pdfjsLib.getDocument(pdfUrl).promise.then(function(pdf) {
     });
   }
 });
-</script>
+// BACK TO TOP BUTTON
+
+const backToTop = document.getElementById("backToTop");
+
+window.addEventListener("scroll", () => {
+  if (window.scrollY > 400) {
+    backToTop.classList.add("show");
+  } else {
+    backToTop.classList.remove("show");
+  }
+});
+
+backToTop.addEventListener("click", () => {
+  window.scrollTo({
+    top: 0,
+    behavior: "smooth"
+  });
+});</script>
 <script>
 let rating=0;
 document.querySelectorAll('#stars button').forEach(b=>b.onclick=()=>{
@@ -467,5 +514,6 @@ photoUpload.addEventListener('change', e=>{
   photoUpload.value='';
 });
 </script><h3>Click below for more about Nahrikhera</h3><iframe src="Nahrikhera%20fort.pdf" width="100%" height="800" style="border:none;"></iframe>
-</body>
+<!-- BACK TO TOP BUTTON -->
+<button id="backToTop" title="Back to Top">↑</button></body>
 </html>
